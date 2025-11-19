@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CompetitorPulse
+
+A full-featured SaaS application for tracking competitors, monitoring website changes, and getting AI-powered insights.
+
+## Features
+
+- **Competitor Tracking**: Add and manage competitors with their websites and social links
+- **24/7 Monitoring**: Automated scraping of competitor websites every 24 hours
+- **Change Detection**: Automatically detects text changes, pricing updates, new features, and more
+- **AI Summaries**: Get intelligent summaries of competitor activity powered by OpenAI
+- **Email Reports**: Receive daily or weekly email reports with competitor insights
+- **Alerts**: Get notified when important changes are detected
+- **Stripe Integration**: Manage subscriptions and payments
+- **Clean UI**: Modern, minimal design with smooth animations
+
+## Tech Stack
+
+- **Next.js 16** (App Router) with TypeScript
+- **Supabase** for authentication and database
+- **Stripe** for payment processing
+- **OpenAI** for AI-powered summaries
+- **Tailwind CSS** for styling
+- **Framer Motion** for animations
 
 ## Getting Started
 
-First, run the development server:
-
+1. Install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Set up environment variables (see `env.template`):
+```bash
+cp env.template .env.local
+# Fill in your values
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run database migrations in Supabase (see `supabase/` folder)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Start development server:
+```bash
+npm run dev
+```
 
-## Learn More
+5. Open [http://localhost:3000](http://localhost:3000)
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+See `PRE_LAUNCH_CHECKLIST.md` for detailed deployment instructions.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Private - All rights reserved
