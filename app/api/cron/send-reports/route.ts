@@ -1,14 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServiceClient } from '@/lib/supabase/server';
-import { sendDailyReport, sendWeeklyReport } from '@/lib/email';
+import { sendUserEmailSummary } from '@/lib/email-summaries';
 
 // This endpoint should be called by a cron job to send daily/weekly email reports
 export async function GET(req: NextRequest) {
   try {
     // Verify cron secret if needed
     const authHeader = req.headers.get('authorization');
-    if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    const secret = req.nextUrl.searchParams.get('secret');
+    const expectedSecret = process.env.CRON_SECRET;
+
+    if (expectedSecret) {
+      if (authHeader && authHeader !== `Bearer ${expectedSecret}`) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      }
+      if (secret && secret !== expectedSecret) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      }
+      if (!authHeader && !secret) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      }
     }
 
     const { type } = req.nextUrl.searchParams;
@@ -23,53 +34,33 @@ export async function GET(req: NextRequest) {
 
     const supabase = await createServiceClient();
 
-    // Get all users with email preferences (for now, all active users)
+    // Get all users with email preferences matching the requested type
     const { data: profiles } = await supabase
       .from('profiles')
-      .select('id, email')
+      .select('id, email, email_frequency')
+      .eq('email_frequency', reportType)
       .not('email', 'is', null);
 
     if (!profiles || profiles.length === 0) {
-      return NextResponse.json({ message: 'No users to send reports to' });
+      return NextResponse.json({ 
+        message: `No users with ${reportType} email frequency to send reports to`,
+        processed: 0,
+        results: []
+      });
     }
 
     const results = [];
 
     for (const profile of profiles) {
       try {
-        // Generate report for user
-        const reportResponse = await fetch(
-          `${process.env.NEXT_PUBLIC_APP_URL}/api/reports/generate`,
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              // In production, you'd need to authenticate this request
-              // For now, we'll use a service role or API key
-            },
-            body: JSON.stringify({
-              type: reportType,
-              userId: profile.id, // You'd need to modify the generate endpoint to accept userId
-            }),
-          }
-        );
-
-        if (!reportResponse.ok) {
-          throw new Error('Failed to generate report');
-        }
-
-        const report = await reportResponse.json();
-
-        // Send email
-        const emailResult =
-          reportType === 'daily'
-            ? await sendDailyReport(profile.email!, report.content)
-            : await sendWeeklyReport(profile.email!, report.content);
+        // Send email summary for user (this function handles generating the summary)
+        const emailResult = await sendUserEmailSummary(profile.id);
 
         results.push({
           user_id: profile.id,
           email: profile.email,
           success: emailResult.success,
+          error: emailResult.error,
         });
       } catch (error: any) {
         results.push({
@@ -81,10 +72,15 @@ export async function GET(req: NextRequest) {
       }
     }
 
+    const successCount = results.filter(r => r.success).length;
+    const errorCount = results.filter(r => !r.success).length;
+
     return NextResponse.json({
       success: true,
       report_type: reportType,
       processed: profiles.length,
+      sent: successCount,
+      errors: errorCount,
       results,
     });
   } catch (error: any) {
