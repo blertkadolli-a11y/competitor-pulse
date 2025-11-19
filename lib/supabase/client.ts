@@ -6,10 +6,11 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 let supabaseClient: ReturnType<typeof createBrowserClient> | null = null;
 
 export function createClient() {
-  if (!supabaseUrl || !supabaseAnonKey) {
-    console.warn('Missing Supabase environment variables!');
-    console.warn('Please set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in .env.local');
-    // Return a mock client that won't crash the app
+  if (!supabaseUrl || !supabaseAnonKey || supabaseUrl.includes('placeholder') || supabaseUrl.includes('your-project')) {
+    const error = 'Missing or invalid Supabase environment variables! Please set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.';
+    console.error(error);
+    // Still create a client to prevent crashes, but it will fail on API calls
+    // This allows the app to show proper error messages
     return createBrowserClient(
       supabaseUrl || 'https://placeholder.supabase.co',
       supabaseAnonKey || 'placeholder-key'

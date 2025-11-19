@@ -47,7 +47,20 @@ function LoginForm() {
       router.refresh();
     } catch (err: any) {
       console.error('Login error:', err);
-      setError(err.message || 'An unexpected error occurred');
+      
+      // Provide more helpful error messages
+      let errorMessage = err.message || 'An unexpected error occurred';
+      
+      // Check for common network/configuration errors
+      if (err.message?.includes('Failed to fetch') || err.message?.includes('NetworkError')) {
+        errorMessage = 'Unable to connect to the server. Please check your internet connection and ensure the Supabase environment variables are configured correctly in Vercel.';
+      } else if (err.message?.includes('Invalid API key') || err.message?.includes('JWT')) {
+        errorMessage = 'Configuration error: Invalid Supabase API key. Please check your environment variables.';
+      } else if (err.message?.includes('Invalid URL')) {
+        errorMessage = 'Configuration error: Invalid Supabase URL. Please check your environment variables.';
+      }
+      
+      setError(errorMessage);
       setLoading(false);
     }
   };
