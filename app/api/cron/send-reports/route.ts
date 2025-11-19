@@ -3,6 +3,7 @@ import { createServiceClient } from '@/lib/supabase/server';
 import { sendUserEmailSummary } from '@/lib/email-summaries';
 
 // This endpoint should be called by a cron job to send daily/weekly email reports
+// Uses sendUserEmailSummary from email-summaries.ts which handles both daily and weekly summaries
 export async function GET(req: NextRequest) {
   try {
     // Verify cron secret if needed
