@@ -228,7 +228,7 @@ export default function PricingPage() {
                   ))}
                 </ul>
                 <Button
-                  variant={plan.popular ? 'primary' : 'secondary'}
+                  variant={plan.popular ? 'default' : 'secondary'}
                   className="w-full"
                   onClick={() => handleGetStarted(plan.id)}
                   disabled={loading === plan.id}

@@ -98,32 +98,47 @@ export default function SignupPage() {
               </div>
             )}
 
-            <Input
-              label="Full Name"
-              type="text"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              placeholder="John Doe"
-            />
+            <div className="space-y-2">
+              <label htmlFor="fullName" className="text-sm font-medium text-[var(--foreground)]">
+                Full Name
+              </label>
+              <Input
+                id="fullName"
+                type="text"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                placeholder="John Doe"
+              />
+            </div>
 
-            <Input
-              label="Email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              placeholder="you@example.com"
-            />
+            <div className="space-y-2">
+              <label htmlFor="email" className="text-sm font-medium text-[var(--foreground)]">
+                Email
+              </label>
+              <Input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="you@example.com"
+              />
+            </div>
 
-            <Input
-              label="Password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              placeholder="••••••••"
-              minLength={6}
-            />
+            <div className="space-y-2">
+              <label htmlFor="password" className="text-sm font-medium text-[var(--foreground)]">
+                Password
+              </label>
+              <Input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                placeholder="••••••••"
+                minLength={6}
+              />
+            </div>
 
             <p className="text-xs text-[var(--muted-foreground)]">
               Password must be at least 6 characters long

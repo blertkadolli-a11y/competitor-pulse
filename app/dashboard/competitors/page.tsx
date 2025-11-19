@@ -135,7 +135,7 @@ export default function CompetitorsListPage() {
                   </Button>
                 </Link>
                 <Button
-                  variant="danger"
+                  variant="destructive"
                   size="sm"
                   onClick={() => handleDelete(competitor.id)}
                 >

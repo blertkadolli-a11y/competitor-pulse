@@ -30,12 +30,12 @@ export async function GET(req: NextRequest) {
       const stripe = getStripe();
       
       // Make a simple API call to verify the key works
-      const account = await stripe.account.retrieve();
+      const balance = await stripe.balance.retrieve();
       
       return NextResponse.json({
         success: true,
         message: 'Stripe API key is valid',
-        accountId: account.id,
+        available: balance.available.length > 0,
         keyPrefix: secretKey.substring(0, 10) + '...',
         keyLength: secretKey.length,
       });

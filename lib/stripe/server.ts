@@ -35,9 +35,7 @@ export function getStripe(): Stripe {
     }
     
     try {
-      stripeInstance = new Stripe(trimmedKey, {
-        apiVersion: '2024-12-18.acacia',
-      });
+      stripeInstance = new Stripe(trimmedKey);
     } catch (error: any) {
       // Provide more helpful error messages
       if (error.message?.includes('Invalid API Key')) {

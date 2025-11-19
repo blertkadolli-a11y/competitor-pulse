@@ -22,7 +22,7 @@ export async function GET(req: NextRequest) {
       }
     }
 
-    const { type } = req.nextUrl.searchParams;
+    const type = req.nextUrl.searchParams.get('type');
     const reportType = type === 'weekly' ? 'weekly' : 'daily';
 
     if (!type || (type !== 'daily' && type !== 'weekly')) {

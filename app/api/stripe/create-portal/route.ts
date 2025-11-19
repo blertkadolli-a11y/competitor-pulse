@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
 
     const { data: profile } = await supabase
       .from('profiles')
-      .select('stripe_customer_id, stripe_subscription_id')
+      .select('id, stripe_customer_id, stripe_subscription_id')
       .eq('auth_user_id', user.id)
       .single();
 

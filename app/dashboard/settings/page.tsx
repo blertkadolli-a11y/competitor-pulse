@@ -250,7 +250,7 @@ export default function SettingsPage() {
                     Manage Subscription
                   </Button>
                   {user?.stripe_subscription_id && (
-                    <Button variant="danger" onClick={handleCancelSubscription} className="w-full">
+                    <Button variant="destructive" onClick={handleCancelSubscription} className="w-full">
                       Cancel Subscription
                     </Button>
                   )}
@@ -412,7 +412,7 @@ export default function SettingsPage() {
             Danger Zone
           </h2>
           <Button
-            variant="danger"
+            variant="destructive"
             onClick={async () => {
               if (!confirm('Are you sure you want to delete your account? This cannot be undone.')) {
                 return;

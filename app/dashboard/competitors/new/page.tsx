@@ -120,80 +120,120 @@ export default function AddCompetitorPage() {
             </div>
           )}
 
-          <Input
-            label="Competitor Name *"
-            type="text"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            required
-            placeholder="e.g., Acme Inc."
-          />
+          <div className="space-y-2">
+            <label htmlFor="name" className="text-sm font-medium text-[var(--foreground)]">
+              Competitor Name *
+            </label>
+            <Input
+              id="name"
+              type="text"
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              required
+              placeholder="e.g., Acme Inc."
+            />
+          </div>
 
-          <Input
-            label="Website URL *"
-            type="url"
-            value={formData.website}
-            onChange={(e) => setFormData({ ...formData, website: e.target.value })}
-            required
-            placeholder="e.g., acme.com or https://acme.com"
-          />
+          <div className="space-y-2">
+            <label htmlFor="website" className="text-sm font-medium text-[var(--foreground)]">
+              Website URL *
+            </label>
+            <Input
+              id="website"
+              type="url"
+              value={formData.website}
+              onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+              required
+              placeholder="e.g., acme.com or https://acme.com"
+            />
+          </div>
 
           <div className="space-y-4">
             <h3 className="text-sm font-medium text-[var(--foreground)]">Social Links (Optional)</h3>
 
-            <Input
-              label="Twitter / X"
-              type="url"
-              value={formData.twitter}
-              onChange={(e) => setFormData({ ...formData, twitter: e.target.value })}
-              placeholder="https://twitter.com/acme"
-            />
+            <div className="space-y-2">
+              <label htmlFor="twitter" className="text-sm font-medium text-[var(--foreground)]">
+                Twitter / X
+              </label>
+              <Input
+                id="twitter"
+                type="url"
+                value={formData.twitter}
+                onChange={(e) => setFormData({ ...formData, twitter: e.target.value })}
+                placeholder="https://twitter.com/acme"
+              />
+            </div>
 
-            <Input
-              label="LinkedIn"
-              type="url"
-              value={formData.linkedin}
-              onChange={(e) => setFormData({ ...formData, linkedin: e.target.value })}
-              placeholder="https://linkedin.com/company/acme"
-            />
+            <div className="space-y-2">
+              <label htmlFor="linkedin" className="text-sm font-medium text-[var(--foreground)]">
+                LinkedIn
+              </label>
+              <Input
+                id="linkedin"
+                type="url"
+                value={formData.linkedin}
+                onChange={(e) => setFormData({ ...formData, linkedin: e.target.value })}
+                placeholder="https://linkedin.com/company/acme"
+              />
+            </div>
 
-            <Input
-              label="Facebook"
-              type="url"
-              value={formData.facebook}
-              onChange={(e) => setFormData({ ...formData, facebook: e.target.value })}
-              placeholder="https://facebook.com/acme"
-            />
+            <div className="space-y-2">
+              <label htmlFor="facebook" className="text-sm font-medium text-[var(--foreground)]">
+                Facebook
+              </label>
+              <Input
+                id="facebook"
+                type="url"
+                value={formData.facebook}
+                onChange={(e) => setFormData({ ...formData, facebook: e.target.value })}
+                placeholder="https://facebook.com/acme"
+              />
+            </div>
 
-            <Input
-              label="Instagram"
-              type="url"
-              value={formData.instagram}
-              onChange={(e) => setFormData({ ...formData, instagram: e.target.value })}
-              placeholder="https://instagram.com/acme"
-            />
+            <div className="space-y-2">
+              <label htmlFor="instagram" className="text-sm font-medium text-[var(--foreground)]">
+                Instagram
+              </label>
+              <Input
+                id="instagram"
+                type="url"
+                value={formData.instagram}
+                onChange={(e) => setFormData({ ...formData, instagram: e.target.value })}
+                placeholder="https://instagram.com/acme"
+              />
+            </div>
 
-            <Input
-              label="YouTube"
-              type="url"
-              value={formData.youtube}
-              onChange={(e) => setFormData({ ...formData, youtube: e.target.value })}
-              placeholder="https://youtube.com/@acme"
-            />
+            <div className="space-y-2">
+              <label htmlFor="youtube" className="text-sm font-medium text-[var(--foreground)]">
+                YouTube
+              </label>
+              <Input
+                id="youtube"
+                type="url"
+                value={formData.youtube}
+                onChange={(e) => setFormData({ ...formData, youtube: e.target.value })}
+                placeholder="https://youtube.com/@acme"
+              />
+            </div>
 
-            <Input
-              label="TikTok"
-              type="url"
-              value={formData.tiktok}
-              onChange={(e) => setFormData({ ...formData, tiktok: e.target.value })}
-              placeholder="https://tiktok.com/@acme"
-            />
+            <div className="space-y-2">
+              <label htmlFor="tiktok" className="text-sm font-medium text-[var(--foreground)]">
+                TikTok
+              </label>
+              <Input
+                id="tiktok"
+                type="url"
+                value={formData.tiktok}
+                onChange={(e) => setFormData({ ...formData, tiktok: e.target.value })}
+                placeholder="https://tiktok.com/@acme"
+              />
+            </div>
           </div>
 
           <div className="flex gap-4 pt-4">
             <Button
               type="submit"
-              disabled={loading || (subscriptionCheck && !subscriptionCheck.allowed)}
+              disabled={loading || (subscriptionCheck?.allowed === false)}
               className="flex-1"
             >
               {loading ? 'Adding...' : 'Add Competitor'}

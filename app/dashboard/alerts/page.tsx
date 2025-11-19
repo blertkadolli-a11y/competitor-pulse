@@ -50,7 +50,7 @@ export default function AlertsPage() {
         .order('created_at', { ascending: false });
 
       if (filter === 'unread') {
-        query = query.eq('read', false);
+        query = query.eq('is_read', false);
       }
 
       const { data, error } = await query;
@@ -75,14 +75,14 @@ export default function AlertsPage() {
     try {
       const { error } = await supabase
         .from('alerts')
-        .update({ read: true })
+        .update({ is_read: true })
         .eq('id', alertId);
 
       if (error) throw error;
 
       setAlerts(
         alerts.map((alert) =>
-          alert.id === alertId ? { ...alert, read: true } : alert
+          alert.id === alertId ? { ...alert, is_read: true } : alert
         )
       );
     } catch (error) {
@@ -109,13 +109,13 @@ export default function AlertsPage() {
 
       const { error } = await supabase
         .from('alerts')
-        .update({ read: true })
+        .update({ is_read: true })
         .eq('user_id', profile.id)
-        .eq('read', false);
+        .eq('is_read', false);
 
       if (error) throw error;
 
-      setAlerts(alerts.map((alert) => ({ ...alert, read: true })));
+      setAlerts(alerts.map((alert) => ({ ...alert, is_read: true })));
     } catch (error) {
       console.error('Error marking all alerts as read:', error);
     }
@@ -140,7 +140,7 @@ export default function AlertsPage() {
     );
   }
 
-  const unreadCount = alerts.filter((a) => !a.read).length;
+  const unreadCount = alerts.filter((a) => !a.is_read).length;
 
   return (
     <div>
@@ -208,7 +208,7 @@ export default function AlertsPage() {
           {alerts.map((alert) => (
             <Card
               key={alert.id}
-              className={!alert.read ? 'border-[var(--primary)] bg-[var(--accent)]' : ''}
+              className={!alert.is_read ? 'border-[var(--primary)] bg-[var(--accent)]' : ''}
             >
               <div className="flex items-start gap-4">
                 <div className="text-2xl">
@@ -228,7 +228,7 @@ export default function AlertsPage() {
                     <span className="text-xs text-[var(--muted-foreground)]">
                       {formatDistanceToNow(new Date(alert.created_at), { addSuffix: true })}
                     </span>
-                    {!alert.read && (
+                    {!alert.is_read && (
                       <span className="ml-auto text-xs bg-[var(--primary)] text-[var(--primary-foreground)] px-2 py-1 rounded-full">
                         New
                       </span>
@@ -245,7 +245,7 @@ export default function AlertsPage() {
                         View Details
                       </Button>
                     </Link>
-                    {!alert.read && (
+                    {!alert.is_read && (
                       <Button
                         variant="ghost"
                         size="sm"

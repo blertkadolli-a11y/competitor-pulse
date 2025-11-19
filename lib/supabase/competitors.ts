@@ -271,7 +271,7 @@ export async function getAllAlerts(unreadOnly = false): Promise<Alert[]> {
 
   if (!competitors || competitors.length === 0) return [];
 
-  const competitorIds = competitors.map((c) => c.id);
+  const competitorIds = competitors.map((c: { id: string }) => c.id);
 
   let query = supabase
     .from('alerts')
@@ -379,7 +379,7 @@ export async function markAllAlertsAsRead(competitorId?: string): Promise<void> 
 
     if (!competitors || competitors.length === 0) return;
 
-    const competitorIds = competitors.map((c) => c.id);
+    const competitorIds = competitors.map((c: { id: string }) => c.id);
     query = query.in('competitor_id', competitorIds);
   }
 

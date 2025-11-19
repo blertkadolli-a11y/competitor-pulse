@@ -3,9 +3,13 @@ import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 import OpenAI from 'openai';
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+function getOpenAI() {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    throw new Error('OPENAI_API_KEY is not configured');
+  }
+  return new OpenAI({ apiKey });
+}
 
 export async function POST(req: NextRequest) {
   try {
@@ -109,6 +113,7 @@ Provide a concise AI summary that:
 
 Keep it professional and actionable (200-300 words).`;
 
+    const openai = getOpenAI();
     const completion = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo',
       messages: [
