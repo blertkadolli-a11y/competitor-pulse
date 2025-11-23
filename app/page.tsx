@@ -91,35 +91,49 @@ export default function LandingPage() {
               <div className="space-y-4">
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <div className="h-3 w-3 rounded-full bg-green-500 animate-pulse" />
-                  Live Dashboard
+                  Live Dashboard Preview
                 </div>
                 <div className="space-y-3">
                   {/* Sample Competitor Card */}
-                  <div className="rounded-lg border bg-background p-3">
+                  <div className="rounded-lg border bg-background p-3 hover:border-primary transition-colors">
                     <div className="flex items-center justify-between mb-2">
-                      <div className="h-4 w-24 bg-primary/20 rounded animate-pulse" />
-                      <div className="h-3 w-12 bg-green-500/20 rounded" />
+                      <h4 className="text-sm font-semibold">Acme Corp</h4>
+                      <span className="text-xs px-2 py-0.5 bg-green-500/10 text-green-600 rounded-full">Active</span>
                     </div>
-                    <div className="h-3 w-32 bg-muted rounded mb-1" />
-                    <div className="h-2 w-20 bg-muted rounded" />
+                    <p className="text-xs text-muted-foreground mb-1">acme.com</p>
+                    <p className="text-xs text-muted-foreground">3 changes detected today</p>
                   </div>
-                  {/* Sample Metric Cards */}
+                  
+                  {/* Sample Metrics */}
                   <div className="grid grid-cols-2 gap-2">
-                    <div className="rounded-lg border bg-background p-2">
-                      <div className="h-2 w-16 bg-muted rounded mb-2" />
-                      <div className="h-5 w-12 bg-primary/20 rounded" />
+                    <div className="rounded-lg border bg-background p-2.5">
+                      <p className="text-xs text-muted-foreground mb-1">Competitors</p>
+                      <p className="text-lg font-bold">12</p>
                     </div>
-                    <div className="rounded-lg border bg-background p-2">
-                      <div className="h-2 w-16 bg-muted rounded mb-2" />
-                      <div className="h-5 w-12 bg-primary/20 rounded" />
+                    <div className="rounded-lg border bg-background p-2.5">
+                      <p className="text-xs text-muted-foreground mb-1">Alerts</p>
+                      <p className="text-lg font-bold text-orange-600">5</p>
                     </div>
                   </div>
-                  {/* Sample Activity */}
+                  
+                  {/* Sample Recent Activity */}
                   <div className="rounded-lg border bg-background p-3">
-                    <div className="h-3 w-20 bg-muted rounded mb-2" />
-                    <div className="space-y-1.5">
-                      <div className="h-2 w-full bg-muted rounded" />
-                      <div className="h-2 w-3/4 bg-muted rounded" />
+                    <p className="text-xs font-medium mb-2">Recent Activity</p>
+                    <div className="space-y-2">
+                      <div className="flex items-start gap-2">
+                        <span className="text-xs">💰</span>
+                        <div className="flex-1">
+                          <p className="text-xs">Pricing change detected</p>
+                          <p className="text-xs text-muted-foreground">2 hours ago</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <span className="text-xs">✨</span>
+                        <div className="flex-1">
+                          <p className="text-xs">New feature added</p>
+                          <p className="text-xs text-muted-foreground">5 hours ago</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
