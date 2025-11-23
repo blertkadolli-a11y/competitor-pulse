@@ -210,7 +210,7 @@ export default function LandingPage() {
           />
           <PricingCard
             name="Enterprise"
-            price="Custom"
+            price="$299"
             description="For large organizations"
             features={[
               'Track up to 100 competitors',
