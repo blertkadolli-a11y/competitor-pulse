@@ -90,16 +90,38 @@ export default function LandingPage() {
             <div className="rounded-xl border bg-card p-6 shadow-2xl">
               <div className="space-y-4">
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <div className="h-3 w-3 rounded-full bg-green-500" />
+                  <div className="h-3 w-3 rounded-full bg-green-500 animate-pulse" />
                   Live Dashboard
                 </div>
-                <div className="space-y-2">
-                  {[1, 2, 3].map((i) => (
-                    <div
-                      key={i}
-                      className="h-16 rounded-lg bg-muted"
-                    />
-                  ))}
+                <div className="space-y-3">
+                  {/* Sample Competitor Card */}
+                  <div className="rounded-lg border bg-background p-3">
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="h-4 w-24 bg-primary/20 rounded animate-pulse" />
+                      <div className="h-3 w-12 bg-green-500/20 rounded" />
+                    </div>
+                    <div className="h-3 w-32 bg-muted rounded mb-1" />
+                    <div className="h-2 w-20 bg-muted rounded" />
+                  </div>
+                  {/* Sample Metric Cards */}
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="rounded-lg border bg-background p-2">
+                      <div className="h-2 w-16 bg-muted rounded mb-2" />
+                      <div className="h-5 w-12 bg-primary/20 rounded" />
+                    </div>
+                    <div className="rounded-lg border bg-background p-2">
+                      <div className="h-2 w-16 bg-muted rounded mb-2" />
+                      <div className="h-5 w-12 bg-primary/20 rounded" />
+                    </div>
+                  </div>
+                  {/* Sample Activity */}
+                  <div className="rounded-lg border bg-background p-3">
+                    <div className="h-3 w-20 bg-muted rounded mb-2" />
+                    <div className="space-y-1.5">
+                      <div className="h-2 w-full bg-muted rounded" />
+                      <div className="h-2 w-3/4 bg-muted rounded" />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
