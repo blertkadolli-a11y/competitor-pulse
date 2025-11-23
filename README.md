@@ -1,6 +1,6 @@
-# CompetitorPulse
+# SpectraTrack
 
-A full-featured SaaS application for tracking competitors, monitoring website changes, and getting AI-powered insights.
+SpectraTrack is a full-featured SaaS application for tracking competitors, monitoring website changes, and getting AI-powered insights.
 
 ## Features
 

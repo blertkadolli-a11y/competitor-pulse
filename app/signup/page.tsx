@@ -94,8 +94,8 @@ export default function SignupPage() {
     <div className="min-h-screen flex items-center justify-center bg-[var(--background)] px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <Link href="/" className="text-2xl font-semibold">
-            CompetitorPulse
+          <Link href="/" className="text-2xl font-semibold neon-text">
+            SpectraTrack
           </Link>
           <h1 className="text-3xl font-bold mt-4 mb-2">Create your account</h1>
           <p className="text-[var(--muted-foreground)]">

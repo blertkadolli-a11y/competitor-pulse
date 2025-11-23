@@ -9,12 +9,19 @@ import { Search, Bell, TrendingUp, FileText, Shield, Zap } from 'lucide-react'
 
 export default function LandingPage() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-[#020014] text-white relative overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-32 -left-20 w-[420px] h-[420px] bg-[#00E6FF]/20 blur-[140px]" />
+        <div className="absolute -bottom-20 right-0 w-[520px] h-[520px] bg-[#FF007A]/15 blur-[160px]" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[480px] h-[480px] bg-[#7A00FF]/25 blur-[200px]" />
+      </div>
       {/* Header */}
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-[#030018]/80 backdrop-blur-xl">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <div className="flex items-center gap-2">
-            <h1 className="text-xl font-bold">CompetitorPulse</h1>
+            <span className="text-xl font-semibold tracking-tight neon-text drop-shadow-[0_0_18px_rgba(0,230,255,0.6)]">
+              SpectraTrack
+            </span>
           </div>
           <nav className="flex items-center gap-4">
             <Button variant="ghost" asChild>
@@ -38,20 +45,20 @@ export default function LandingPage() {
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
           <div className="flex flex-col gap-6">
             <motion.h1
-              className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-balance"
+              className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight neon-text drop-shadow-[0_10px_35px_rgba(0,0,0,0.45)]"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
             >
-              Track Your Competitors in Real-Time
+              Track competitor changes. Instantly. Automatically.
             </motion.h1>
             <motion.p
-              className="text-xl text-muted-foreground text-pretty"
+              className="text-lg text-white/80 max-w-2xl"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.1 }}
             >
-              Stay ahead of the competition with automated monitoring, intelligent alerts, and AI-powered insights.
+              Real-time monitoring of competitor websites with instant alerts on pricing, features, and content changes.
             </motion.p>
             <motion.div
               className="flex flex-col sm:flex-row gap-4"
@@ -70,16 +77,16 @@ export default function LandingPage() {
             {/* Small feature preview cards */}
             <div className="grid grid-cols-3 gap-4 mt-8">
               {[
-                { label: 'Real-time', value: '24/7' },
+                { label: 'Signals tracked', value: '24k+' },
                 { label: 'Competitors', value: '100+' },
-                { label: 'Reports', value: 'AI' },
+                { label: 'Alert latency', value: '< 5s' },
               ].map((stat) => (
                 <div
                   key={stat.label}
-                  className="rounded-lg border bg-card p-4 text-center"
+                  className="rounded-2xl border border-white/10 bg-white/5 p-4 text-center shadow-[0_15px_35px_rgba(3,0,20,0.4)] backdrop-blur-xl"
                 >
-                  <div className="text-2xl font-bold">{stat.value}</div>
-                  <div className="text-xs text-muted-foreground">{stat.label}</div>
+                  <div className="text-2xl font-bold text-white">{stat.value}</div>
+                  <div className="text-xs text-white/70">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -161,7 +168,7 @@ export default function LandingPage() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           <FeatureCard
             title="Track Changes"
-            description="Monitor competitor websites for changes in pricing, features, content, and more with real-time notifications."
+            description="Monitor competitor websites for pricing, product, and messaging changes in real time."
             icon={Search}
             index={0}
           />
@@ -208,7 +215,7 @@ export default function LandingPage() {
           transition={{ duration: 0.3 }}
         >
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">Simple, Transparent Pricing</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-white/70 max-w-2xl mx-auto">
             Choose the plan that fits your needs
           </p>
         </motion.div>
@@ -266,7 +273,7 @@ export default function LandingPage() {
       <footer className="border-t mt-auto">
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-muted-foreground">© 2025 CompetitorPulse. All rights reserved.</p>
+            <p className="text-sm text-white/60">© 2025 SpectraTrack. All rights reserved.</p>
             <nav className="flex gap-4">
               <Button variant="ghost" size="sm" asChild>
                 <Link href="#">Privacy</Link>

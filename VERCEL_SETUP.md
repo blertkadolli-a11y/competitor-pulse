@@ -9,7 +9,7 @@ The "Failed to fetch" error on signup/login pages means your **Supabase environm
 ### 1. Go to Vercel Dashboard
 1. Visit [vercel.com](https://vercel.com)
 2. Sign in to your account
-3. Select your **CompetitorPulse** project
+3. Select your **SpectraTrack** project
 
 ### 2. Add Environment Variables
 1. Go to **Settings** → **Environment Variables**

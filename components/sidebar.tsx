@@ -26,7 +26,7 @@ export function Sidebar() {
       <div className="flex h-full flex-col gap-2 p-4">
         {/* Logo */}
         <div className="mb-4 px-2 py-4">
-          <h1 className="text-2xl font-bold text-sidebar-foreground">CompetitorPulse</h1>
+          <h1 className="text-2xl font-bold text-sidebar-foreground">SpectraTrack</h1>
         </div>
 
         {/* Navigation */}

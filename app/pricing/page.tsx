@@ -156,8 +156,8 @@ export default function PricingPage() {
       <nav className="border-b border-[var(--border)] sticky top-0 z-50 bg-[var(--background)]/80 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <Link href="/" className="text-xl font-semibold">
-              CompetitorPulse
+            <Link href="/" className="text-xl font-semibold neon-text">
+              SpectraTrack
             </Link>
             <div className="flex items-center space-x-4">
               <Link href="/login">

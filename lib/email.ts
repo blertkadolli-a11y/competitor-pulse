@@ -46,7 +46,7 @@ async function sendEmailViaResend(options: EmailOptions): Promise<EmailResult> {
 
   try {
     const fromEmail = options.from || process.env.EMAIL_FROM || 'onboarding@resend.dev';
-    const fromName = process.env.EMAIL_FROM_NAME || 'CompetitorPulse';
+    const fromName = process.env.EMAIL_FROM_NAME || 'SpectraTrack';
 
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -105,7 +105,7 @@ export function generateEmailHTML(content: {
 </head>
 <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
   <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
-    <h1 style="color: white; margin: 0; font-size: 24px;">CompetitorPulse</h1>
+    <h1 style="color: white; margin: 0; font-size: 24px;">SpectraTrack</h1>
   </div>
   
   <div style="background: #ffffff; padding: 30px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
@@ -129,7 +129,7 @@ export function generateEmailHTML(content: {
   </div>
   
   <div style="text-align: center; margin-top: 20px; font-size: 12px; color: #9ca3af;">
-    <p>This email was sent by CompetitorPulse. <a href="${appUrl}/dashboard/settings" style="color: #667eea;">Manage email preferences</a></p>
+    <p>This email was sent by SpectraTrack. <a href="${appUrl}/dashboard/settings" style="color: #667eea;">Manage email preferences</a></p>
   </div>
 </body>
 </html>

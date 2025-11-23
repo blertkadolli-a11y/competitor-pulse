@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document describes the authentication setup using Supabase for CompetitorPulse. The implementation includes email/password authentication, route protection, and a profiles table linked to Supabase auth users.
+This document describes the authentication setup using Supabase for SpectraTrack. The implementation includes email/password authentication, route protection, and a profiles table linked to Supabase auth users.
 
 ## 1. Supabase Schema
 

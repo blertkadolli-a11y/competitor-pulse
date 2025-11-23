@@ -1,6 +1,6 @@
 # 🚀 Pre-Launch Checklist
 
-Complete these steps before launching your CompetitorPulse app to production.
+Complete these steps before launching your SpectraTrack app to production.
 
 ## ✅ Required Configuration
 
@@ -53,7 +53,7 @@ OPENAI_API_KEY=sk-...
 # Using Resend (recommended)
 RESEND_API_KEY=re_...
 EMAIL_FROM=noreply@yourdomain.com
-EMAIL_FROM_NAME=CompetitorPulse
+EMAIL_FROM_NAME=SpectraTrack
 
 # OR using SMTP
 SMTP_HOST=smtp.example.com

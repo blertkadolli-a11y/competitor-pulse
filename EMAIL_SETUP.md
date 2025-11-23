@@ -37,7 +37,7 @@ This adds:
    EMAIL_PROVIDER=resend
    RESEND_API_KEY=re_YOUR_API_KEY_HERE
    EMAIL_FROM=noreply@yourdomain.com
-   EMAIL_FROM_NAME=CompetitorPulse
+   EMAIL_FROM_NAME=SpectraTrack
    ```
 
 4. **Verify Domain (Optional but Recommended):**
@@ -201,7 +201,7 @@ RESEND_API_KEY=re_YOUR_API_KEY
 # Optional
 EMAIL_PROVIDER=resend
 EMAIL_FROM=noreply@yourdomain.com
-EMAIL_FROM_NAME=CompetitorPulse
+EMAIL_FROM_NAME=SpectraTrack
 CRON_SECRET=your-secret-for-protecting-cron-endpoint
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```

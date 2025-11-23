@@ -14,7 +14,7 @@ git status --short
 # Commit
 echo ""
 echo "💾 Committing files..."
-git commit -m "Initial project commit - Full CompetitorPulse app"
+git commit -m "Initial project commit - Full SpectraTrack app"
 
 # Set merge strategy
 echo ""
