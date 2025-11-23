@@ -14,6 +14,7 @@ import { Users, TrendingUp, Bell, FileText } from 'lucide-react'
 export default function DashboardPage() {
   const [competitors, setCompetitors] = useState<Competitor[]>([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
   const [stats, setStats] = useState({
     totalCompetitors: 0,
     totalChanges: 0,
@@ -63,7 +64,7 @@ export default function DashboardPage() {
             .from('alerts')
             .select('*', { count: 'exact', head: true })
             .eq('user_id', profile.id)
-            .eq('read', false),
+            .eq('is_read', false),
         ])
 
         if (!mounted) return
@@ -80,8 +81,21 @@ export default function DashboardPage() {
         if (alertsResult.count !== null) {
           setStats((prev) => ({ ...prev, unreadAlerts: alertsResult.count || 0 }))
         }
-      } catch (error) {
+
+        // Check for errors in any query
+        if (competitorsResult.error) {
+          console.error('Error fetching competitors:', competitorsResult.error)
+          setError('Failed to load competitors')
+        }
+        if (snapshotsResult.error) {
+          console.error('Error fetching snapshots:', snapshotsResult.error)
+        }
+        if (alertsResult.error) {
+          console.error('Error fetching alerts:', alertsResult.error)
+        }
+      } catch (error: any) {
         console.error('Error fetching dashboard data:', error)
+        setError(error.message || 'Failed to load dashboard data')
       } finally {
         if (mounted) {
           setLoading(false)
@@ -101,6 +115,25 @@ export default function DashboardPage() {
       <PageTransition>
         <div className="flex items-center justify-center h-64">
           <div className="text-muted-foreground">Loading...</div>
+        </div>
+      </PageTransition>
+    )
+  }
+
+  if (error) {
+    return (
+      <PageTransition>
+        <div className="space-y-6">
+          <Card>
+            <CardContent className="pt-6">
+              <div className="text-center py-8">
+                <div className="text-4xl mb-4">⚠️</div>
+                <h3 className="text-lg font-semibold mb-2">Error Loading Dashboard</h3>
+                <p className="text-muted-foreground mb-4">{error}</p>
+                <Button onClick={() => window.location.reload()}>Retry</Button>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </PageTransition>
     )
