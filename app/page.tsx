@@ -19,9 +19,9 @@ export default function LandingPage() {
       <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-[#030018]/80 backdrop-blur-xl">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <div className="flex items-center gap-2">
-            <span className="text-xl font-semibold tracking-tight neon-text drop-shadow-[0_0_18px_rgba(0,230,255,0.6)]">
+            <Link href="/" className="text-xl font-semibold tracking-tight neon-text drop-shadow-[0_0_18px_rgba(0,230,255,0.6)] hover:drop-shadow-[0_0_25px_rgba(0,230,255,0.8)] transition-all">
               SpectraTrack
-            </span>
+            </Link>
           </div>
           <nav className="flex items-center gap-4">
             <Button variant="ghost" asChild>
